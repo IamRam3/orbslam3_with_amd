@@ -45,5 +45,5 @@ docker run -td --privileged --net=host --ipc=host \
 docker exec -it orbslam3 bash -i -c "update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1 && update-alternatives --install /usr/bin/python python /usr/bin/python3.8 2"
 
 # Install catkin build and noetic hector trajectory
-docker exec -it orbslam3 bash -i -c "sudo apt install ros-noetic-hector-trajectory-server && sudo apt install python3-catkin-tools
+docker exec -it orbslam3 bash -i -c "sudo apt install ros-noetic-hector-trajectory-server && sudo apt install python3-catkin-tools"
 
