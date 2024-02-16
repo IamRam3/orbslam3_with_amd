@@ -43,8 +43,5 @@ docker run -td --privileged --net=host --ipc=host \
     -v `pwd`/ORB_SLAM3:/ORB_SLAM3 \
     sairam4/armcuda_noetic:v2 bash
 
-# Git pull orbslam and compile
-docker exec -it orbslam3 bash -i -c "git clone -b add_euroc_example.sh git@github.com:jahaniam/ORB_SLAM3.git /ORB_SLAM3 && cd /ORB_SLAM3 && chmod +x build.sh && ./build.sh "
-# Compile ORBSLAM3-ROS
-docker exec -it orbslam3 bash -i -c "echo 'ROS_PACKAGE_PATH=/opt/ros/melodic/share:/ORB_SLAM3/Examples/ROS'>>~/.bashrc && source ~/.bashrc && cd /ORB_SLAM3 && chmod +x build_ros.sh && ./build_ros.sh"
-
+# Install catkin build and noetic hector trajectory
+docker exec -it orbslam3 bash -i -c "sudo apt install ros-noetic-hector-trajectory-server && sudo apt install python3-catkin-tools"
