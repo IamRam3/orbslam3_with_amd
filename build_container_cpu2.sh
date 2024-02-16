@@ -41,4 +41,5 @@ docker run -td --privileged --net=host --ipc=host \
     -v /etc/group:/etc/group:ro \
     -v `pwd`/ORB_SLAM3:/ORB_SLAM3 \
     sairam4/orbslam3_with_savemap:v1 bash
-    
+
+docker exec -it orbslam3 bash -i -c "cd ../ && sudo cp -r working/slam_ws ORB_SLAM3"
