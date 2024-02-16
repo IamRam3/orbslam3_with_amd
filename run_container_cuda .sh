@@ -20,9 +20,9 @@ touch $XAUTH
 xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
 
 xhost +local:docker
-docker pull sairam4/armcuda_noetic:v2
+docker pull sairam4/armcuda_slam:v1
 
-# docker pull sairam4/armcuda_noetic:v2
+# docker pull sairam4/armcuda_slam:v1
 
 # Remove existing container
 docker rm -f orbslam3 &>/dev/null
@@ -41,6 +41,6 @@ docker run -td --privileged --net=host --ipc=host \
     -v `pwd`/Datasets:/Datasets \
     -v /etc/group:/etc/group:ro \
     -v `pwd`/ORB_SLAM3:/ORB_SLAM3 \
-    sairam4/armcuda_noetic:v2 bash
+    sairam4/armcuda_slam:v1 bash
 
 docker exec -it orbslam3 bash -i -c "cd ../ && sudo cp -r working/slam_ws ORB_SLAM3"
