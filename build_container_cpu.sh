@@ -47,8 +47,3 @@ docker exec -it orbslam3 bash -i -c "update-alternatives --install /usr/bin/pyth
 # Install catkin build and noetic hector trajectory
 docker exec -it orbslam3 bash -i -c "sudo apt install ros-noetic-hector-trajectory-server && sudo apt install python3-catkin-tools
 
-# Git pull orbslam and compile
-docker exec -it orbslam3 bash -i -c "git clone https://github.com/IamRam3/ORB_SLAM3 /ORB_SLAM3 && cd /ORB_SLAM3 && chmod +x build.sh && ./build.sh "
-# Compile ORBSLAM3-ROS
-docker exec -it orbslam3 bash -i -c "echo 'ROS_PACKAGE_PATH=/opt/ros/noetic/share:/ORB_SLAM3/Examples_old/ROS'>>~/.bashrc && source ~/.bashrc && cd /ORB_SLAM3 && chmod +x build_ros.sh && ./build_ros.sh"
-
