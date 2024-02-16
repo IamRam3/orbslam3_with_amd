@@ -12,17 +12,14 @@ Based on which graphic driver you are running, you should choose the proper dock
 
 ---
 
-## Compilation and Running
+## Running
 
-Steps to compile the Orbslam3 on the sample dataset:
+Steps to use the Orbslam3 
 
-- `./download_dataset_sample.sh`
-- `build_container_cpu.sh` or `build_container_cuda.sh` depending on your machine.
+- `build_container_cpu2.sh` it is for amd architecture.
 
-Now you should see ORB_SLAM3 is compiling. 
-To run a test example:
 - `docker exec -it orbslam3 bash`
-- `cd /ORB_SLAM3/Examples&&./euroc_examples.sh`
+- inside the container source it by`source devel/setup.bash`
 
 ---
 
