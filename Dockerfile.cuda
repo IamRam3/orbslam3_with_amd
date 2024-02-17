@@ -1,22 +1,9 @@
-FROM nvidia/cuda:11.6.1-base-ubuntu20.04
+FROM dustynv/ros:noetic-desktop-l4t-r35.2.1
 
 RUN apt-get update
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get install -y gnupg2 curl lsb-core vim wget python3-pip libpng16-16 libjpeg-turbo8 libtiff5
-
-
-# Installing ROS-noetic
-RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
-
-RUN apt update
-RUN apt install -y ros-noetic-desktop
-RUN apt-get install -y python3-rosdep
-RUN rosdep init
-RUN rosdep update
-RUN echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
-RUN apt install -y python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
 
 # Intalling python-catkin
 RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu `lsb_release -sc` main" > /etc/apt/sources.list.d/ros-latest.list'
