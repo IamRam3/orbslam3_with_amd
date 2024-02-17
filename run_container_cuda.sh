@@ -41,6 +41,7 @@ docker run -td --privileged --net=host --ipc=host \
     -v `pwd`/Datasets:/Datasets \
     -v /etc/group:/etc/group:ro \
     -v `pwd`/ORB_SLAM3:/ORB_SLAM3 \
+    -v /run/user/1000/at-spi:/run/user/1000/at-spi \
     sairam4/armcuda_slam:v1 bash
 
 docker exec -it orbslam3 bash -i -c "cd ../ && sudo cp -r repo/slam_ws ORB_SLAM3"
