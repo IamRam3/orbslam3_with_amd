@@ -56,10 +56,8 @@ RUN cd /tmp && git clone https://github.com/opencv/opencv.git && \
 
 # # Build Pangolin
 RUN cd /tmp && git clone https://github.com/stevenlovegrove/Pangolin && \
-    cd Pangolin && git checkout v0.6 && mkdir build && cd build && \
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=-std=c++11 .. && \
-    make -j$nproc && make install && \
-    cd / && rm -rf /tmp/Pangolin
+    cd Pangolin && git checkout v0.6
+    cd /
 
 COPY ros_entrypoint.sh /ros_entrypoint.sh
 RUN chmod +x  /ros_entrypoint.sh
