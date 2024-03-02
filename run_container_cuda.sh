@@ -20,7 +20,7 @@ touch $XAUTH
 xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
 
 xhost +local:docker
-docker pull sairam4/armcuda_slam:v1
+docker pull sairam4/slam_arm:cvcuda_remap
 
 # docker pull sairam4/armcuda_slam:v1
 
@@ -36,12 +36,12 @@ docker run -td --privileged --net=host --ipc=host \
     -e "QT_X11_NO_MITSHM=1" \
     -v "/tmp/.X11-unix:/tmp/.X11-unix:rw" \
     -e "XAUTHORITY=$XAUTH" \
-    -e ROS_IP=127.0.0.1 \
+    -e ROS_MASTER_URI=http://ubuntu:11311 \
     --cap-add=SYS_PTRACE \
     -v `pwd`/Datasets:/Datasets \
     -v /etc/group:/etc/group:ro \
     -v `pwd`/ORB_SLAM3:/ORB_SLAM3 \
     -v /run/user/1000/at-spi:/run/user/1000/at-spi \
-    sairam4/armcuda_slam:v1 bash
+    sairam4/slam_arm:cvcuda_remap bash
 
 docker exec -it orbslam3 bash -i -c "cd ../ && sudo cp -r repo/slam_ws ORB_SLAM3"
