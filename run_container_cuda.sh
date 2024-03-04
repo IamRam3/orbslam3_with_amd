@@ -20,7 +20,7 @@ touch $XAUTH
 xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
 
 xhost +local:docker
-# docker pull sairam4/patched_slam_nano_withoutframbuffer:cuda1
+docker pull sairam4/slam_arm:nano_opencv
 
 # Remove existing container
 docker rm -f orbslam3 &>/dev/null
@@ -41,6 +41,6 @@ docker run -td --privileged --net=host --ipc=host \
     -v /etc/group:/etc/group:ro \
     -v `pwd`/ORB_SLAM3:/ORB_SLAM3 \
     -v /run/user/1000/at-spi:/run/user/1000/at-spi \
-    sairam4/patched_slam_nano_withoutframebuffer:cuda1 bash
+    sairam4/slam_arm:nano_opencv bash
 
 docker exec -it orbslam3 bash -i -c "cd ../ && sudo cp -r repo/slam_ws ORB_SLAM3"
