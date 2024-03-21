@@ -22,7 +22,7 @@ xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
 
 xhost +local:docker
 
-docker pull sairam4/orbslam3_with_savemap:v1
+docker pull sairam4/orbslam3_workstaion_nav:v1
 
 # Remove existing container
 docker rm -f orbslam3 &>/dev/null
@@ -40,6 +40,6 @@ docker run -td --privileged --net=host --ipc=host \
     -v `pwd`/Datasets:/Datasets \
     -v /etc/group:/etc/group:ro \
     -v `pwd`/ORB_SLAM3:/ORB_SLAM3 \
-    sairam4/orbslam3_with_savemap:v1 bash
+    sairam4/orbslam3_workstation_nav:v1 bash
 
-docker exec -it orbslam3 bash -i -c "cd ../ && sudo cp -r working/slam_ws ORB_SLAM3"
+docker exec -it orbslam3 bash -i -c "cd ../ && sudo cp -r working/catkin_ws ORB_SLAM3"
